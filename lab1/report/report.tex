@@ -1,0 +1,855 @@
+\documentclass[a4paper,14pt]{article}
+
+\usepackage{amsmath}
+\usepackage{cmap} 
+\usepackage[T2A]{fontenc} 
+\usepackage[utf8]{inputenc} 
+\usepackage[english,russian]{babel} 
+\usepackage[left = 2cm, right = 1cm, top = 2cm, bottom = 2 cm]{geometry}
+\usepackage{listings}
+\usepackage{graphicx}
+\usepackage{indentfirst}
+\usepackage{color} 
+\usepackage{float} 
+\usepackage{multirow}
+\usepackage{amsmath, amsfonts, amssymb, mathtools} 
+
+\usepackage{titlesec, blindtext, color}
+
+
+\lstset{
+	language=Matlab, 
+	numbers=left,   
+	frame=single, 
+	escapebegin=\begin{russian}\commentfont,
+    escapeend=\end{russian},
+    breaklines=true,   
+    breakatwhitespace=true,
+    showstringspaces=false,
+	literate={а}{{\selectfont\char224}}1
+	{б}{{\selectfont\char225}}1
+	{в}{{\selectfont\char226}}1
+	{г}{{\selectfont\char227}}1
+	{д}{{\selectfont\char228}}1
+	{е}{{\selectfont\char229}}1
+	{ё}{{\"e}}1
+	{ж}{{\selectfont\char230}}1
+	{з}{{\selectfont\char231}}1
+	{и}{{\selectfont\char232}}1
+	{й}{{\selectfont\char233}}1
+	{к}{{\selectfont\char234}}1
+	{л}{{\selectfont\char235}}1
+	{м}{{\selectfont\char236}}1
+	{н}{{\selectfont\char237}}1
+	{о}{{\selectfont\char238}}1
+	{п}{{\selectfont\char239}}1
+	{р}{{\selectfont\char240}}1
+	{с}{{\selectfont\char241}}1
+	{т}{{\selectfont\char242}}1
+	{у}{{\selectfont\char243}}1
+	{ф}{{\selectfont\char244}}1
+	{х}{{\selectfont\char245}}1
+	{ц}{{\selectfont\char246}}1
+	{ч}{{\selectfont\char247}}1
+	{ш}{{\selectfont\char248}}1
+	{щ}{{\selectfont\char249}}1
+	{ъ}{{\selectfont\char250}}1
+	{ы}{{\selectfont\char251}}1
+	{ь}{{\selectfont\char252}}1
+	{э}{{\selectfont\char253}}1
+	{ю}{{\selectfont\char254}}1
+	{я}{{\selectfont\char255}}1
+	{А}{{\selectfont\char192}}1
+	{Б}{{\selectfont\char193}}1
+	{В}{{\selectfont\char194}}1
+	{Г}{{\selectfont\char195}}1
+	{Д}{{\selectfont\char196}}1
+	{Е}{{\selectfont\char197}}1
+	{Ё}{{\"E}}1
+	{Ж}{{\selectfont\char198}}1
+	{З}{{\selectfont\char199}}1
+	{И}{{\selectfont\char200}}1
+	{Й}{{\selectfont\char201}}1
+	{К}{{\selectfont\char202}}1
+	{Л}{{\selectfont\char203}}1
+	{М}{{\selectfont\char204}}1
+	{Н}{{\selectfont\char205}}1
+	{О}{{\selectfont\char206}}1
+	{П}{{\selectfont\char207}}1
+	{Р}{{\selectfont\char208}}1
+	{С}{{\selectfont\char209}}1
+	{Т}{{\selectfont\char210}}1
+	{У}{{\selectfont\char211}}1
+	{Ф}{{\selectfont\char212}}1
+	{Х}{{\selectfont\char213}}1
+	{Ц}{{\selectfont\char214}}1
+	{Ч}{{\selectfont\char215}}1
+	{Ш}{{\selectfont\char216}}1
+	{Щ}{{\selectfont\char217}}1
+	{Ъ}{{\selectfont\char218}}1
+	{Ы}{{\selectfont\char219}}1
+	{Ь}{{\selectfont\char220}}1
+	{Э}{{\selectfont\char221}}1
+	{Ю}{{\selectfont\char222}}1
+	{Я}{{\selectfont\char223}}1
+}
+
+
+\begin{document}
+\begin{titlepage}
+
+    \begin{table}[H]
+        \centering
+        \footnotesize
+        \begin{tabular}{cc}
+            \multirow{8}{*}{\includegraphics[scale=0.35]{bmstu}}
+            & \\
+            & \\
+            & \textbf{Министерство науки и высшего образования Российской Федерации} \\
+            & \textbf{Федеральное государственное бюджетное образовательное учреждение} \\
+            & \textbf{высшего образования} \\
+            & \textbf{<<Московский государственный технический} \\
+            & \textbf{университет имени Н.Э. Баумана>>} \\
+            & \textbf{(МГТУ им. Н.Э. Баумана)} \\
+        \end{tabular}
+    \end{table}
+
+    \begin{flushleft}
+        \rule[-1cm]{\textwidth}{3pt}
+        \rule{\textwidth}{1pt}
+    \end{flushleft}
+
+    \begin{flushleft}
+        \small
+        ФАКУЛЬТЕТ
+        \underline{<<Информатика и системы управления>>\ \ \ \ \ \ \ 
+        \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ 
+    \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ } \\
+        КАФЕДРА
+        \underline{<<Программное обеспечение ЭВМ и
+        информационные технологии>>
+        \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+    \end{flushleft}
+
+    \vspace{4cm}
+
+     \begin{center}
+        \textbf{Лабораторная работа № 1} \\
+        \textbf{По курсу <<Методы вычислений>>.} \\
+        \vspace{0.5cm}
+        \textbf{Венгерский метод решения задачи о назначениях}
+    \end{center}
+
+    \vspace{3cm}
+
+    \begin{flushleft}
+        \begin{tabular}{ll}
+            \textbf{Студент} & Кондрашова О.П. \\
+            \textbf{Группа} & ИУ7-11М \\
+             \textbf{Вариант} & 13 \\
+            \textbf{Преподаватель} & Власов П.А. \\
+        \end{tabular}
+    \end{flushleft}
+
+    \vspace{7cm}
+
+   \begin{center}
+        Москва, 2021 г.
+    \end{center}
+
+\end{titlepage}
+
+
+\textbf{Цель работы: } изучение венгерского метода решения задачи о назначениях.
+
+\textbf{Содержание работы}
+\begin{enumerate}
+\item реализовать венгерский метод решения задачи о назначениях в виде программы на ЭВМ;
+\item провести решение задачи с матрицей стоимостей, заданной в индивидуальном варианте, рас-
+смотрев два случая:
+\begin{enumerate}
+\item задача о назначениях является задачей минимизации,
+\item задача о назначениях является задачей максимизации.
+\end{enumerate}
+\end{enumerate}
+
+\section{Теоретическая часть}
+
+\subsection{Содержательная постановка задачи}
+
+В распоряжении работодателя имеется $n$ работ и $n$ исполнителей. Стоимость выполнения $i$-ой работы $j$-ым исполнителем составляет $c_{ij} \geq 0$ единиц. Требуется распределить работу между исполнителями так, чтобы:
+\begin{enumerate}
+\item каждый исполнитель выполнял ровно одну работу;
+\item общая стоимость выполнения всех работ была минимальной.
+\end{enumerate}
+
+\subsection{Математическая постановка задачи}
+
+Обозначим $C=(c_{ij})_{i,j = \overline{1;n}}$, где $C$ -- матрица стоимостей.
+Введем управляемые переменные:
+
+\begin{equation}
+x_{ij}(x) =
+ \begin{cases}
+   1, &\text{если $i$-ую работу выполняет $j$-ый работник}
+   \\
+   0, &\text{иначе}
+ \end{cases},  
+\end{equation}
+где $i,j = \overline{1,n}$\\
+
+Обозначим $X=(x_{ij})_{i,j = \overline{1;n}}$, где $X$ -- матрица назначений.
+
+Тогда общая стоимость выполнения работ:
+
+\begin{equation}
+f=\sum\limits_{i=1}^n\sum\limits_{j=1}^n c_{ij} \cdot x_{ij}
+\end{equation}
+
+Условие того, что $j$-й работник выполняет ровно одну работу:
+
+\begin{equation}
+\sum\limits_{i=1}^n x_{ij} = 1,
+\end{equation}
+где $j = \overline{1;n}$
+
+Условие того, что $i$-ю работу выполняет один работник:
+
+\begin{equation}
+\sum\limits_{j=1}^n x_{ij} = 1,
+\end{equation}
+где $i = \overline{1;n}$
+
+Тогда математическая постановка задачи о назначениях имеет следующий вид:
+
+\begin{equation}
+x_{ij}(x) =
+ \begin{cases}
+   f=\sum\limits_{i=1}^n\sum\limits_{j=1}^n c_{ij} \cdot x_{ij} \rightarrow \min
+   \\
+   \sum\limits_{i=1}^n x_{ij} = 1, \quad j = \overline{1;n}
+   \\
+   \sum\limits_{j=1}^n x_{ij} = 1, \quad i = \overline{1;n}
+   \\
+   x_{i,j}\subseteq{0,1}, \quad i,j = \overline{1;n}
+ \end{cases},  
+\end{equation}
+где $f$ -- целевая функция, $c_{ij}$ -- элементы матрицы стоимостей $C$, $x_{ij}$ -- элементы матрицы назначений $X$.
+
+\subsection{Исходные данные индивидуального варианта}
+
+\begin{equation}
+\begin{bmatrix}
+10 & 4 & 9 & 8 & 5\\
+9 & 3 & 5 & 7 & 8\\
+2 & 5 & 8 & 10 & 5\\
+4 & 5 & 7 & 9 & 3\\
+8 & 7 & 10 & 9 & 6
+\end{bmatrix}
+\end{equation}
+
+
+\subsection{Венгерский метод}
+
+Венгерский метод решения задачи о назначениях применяется для решения задачи минимизации, то есть для случая, когда матрица стоимостей $C$ содержит в себе стоимости работ. Также матрица стоимостей $C$ может использоваться для решения задачи максимизации, в этом случае ее элементы отражают прибыль работодателя от назначения $j$-го работника на $i$-ю работу. 
+
+Решение задачи максимизации отличается от решения задачи минимизации тем, что в данном случае в начале алгоритма добавляется шаг, на котором необходимо найти максимальный элемент столбца, вычесть его из каждого элемента матрицы и домножить матрицу на $-1$.
+
+Если решается задача минимизации, алгоритм начинается со следующих шагов:
+\begin{enumerate}
+\item в каждом столбце матрицы стоимостей выбирается наименьший элемент и вычитается из всех элементов этого столбца;
+\item в каждой строке полученной матрицы выбирается наименьший элемент и вычитается из всех элементов этой строки.
+\end{enumerate}
+
+В результате получается матрица, в каждой строке и столбце которой присутствует хотя бы один нуль.
+
+Системой независимых нулей (СНН) будем называть такой набор нулей матрицы стоимостей, в котором никакие два элемента не стоят ни в общей строке, ни в общем столбце.
+
+Для построения начальной СНН необходимо просмотреть столбцы текущей матрицы с размерностью $n \times n$ и первый найденный в столбце 0, в одной строке с которым нет элемента $0^*$, отметить как $0^*$. 
+
+Если полученная СНН содержит $n$ элементов, значит, найдено оптимальное решение. Иначе СНН необходимо улучшить.
+
+Для улучшения СНН необходимо (первый способ):
+\begin{enumerate}
+\item отметить + столбцы, в которых стоят $0^*$ (данные столбцы и все их элементы будем называть выделенными);
+\item найти 0 среди невыделенных элементов и отметить его следующим образом: $0'$;
+\item если в одной строке с $0'$ стоит $0^*$, снять выеделение со столбца с найденным $0^*$ и отметить строку с текущим $0'$, затем повторить поиск;
+
+\item если в строке с выделенным $0'$ нет эелемента $0^*$, то строится L-цепочка:
+
+$текущий 0' \rightarrow \text{по столбцу} \rightarrow 0^* \rightarrow \text{по строке} \rightarrow 0' \rightarrow ... \rightarrow 0'$
+
+В пределах цепочки заменить элементы: $0^* \rightarrow 0, 0' \rightarrow 0^*$
+\end{enumerate}
+
+Если среди невыделенных элементов не найдено нулей, то необходимо (второй способ):
+\begin{enumerate}
+\item среди всех невыделенных элементов выбрать наименьший элемент $h>0$;
+\item вычесть h из элементов в невыделенных столбцах;
+\item прибавить h к элементам в выделенных строках.
+\end{enumerate}
+
+В результате преобразований получим эквивалентную матрицу, среди невыделенных элементов которой есть 0, после этого можно повторить преобразования первого способа.
+
+На рис. \ref{schema} представлена схема алгоритма венгерского метода решения задачи о назначениях для задачи минимизации.
+
+\begin{figure}[H]
+	\begin{center}
+    	\includegraphics[scale=0.42]{schema2}
+        \caption{Результат работы программы}
+        \label{schema}
+	\end{center}
+\end{figure}
+
+\section{Практическая часть}
+
+\subsection{Листинг программы}
+
+В листинге \ref{some-code} приведен текст программы.
+
+\begin{lstlisting}[label=some-code,caption=Листинг программы]
+function lab1()
+C = [10, 4, 9, 8, 5;
+    9, 3, 5, 7, 8;
+    2, 5, 8, 10, 5;
+    4, 5, 7, 9, 3;
+    8, 7, 10, 9, 6];
+
+debug = true;
+%debug = false;
+task_max = true;
+%task_max = false;
+
+[rows, cols] = size(C);
+
+C1 = C;
+
+if task_max
+    % Поиск максимального элемента, вычитание его из элементов
+    % матрицы и домножение на -1
+    max_cost = 0;
+    for i = 1:rows
+        for j = 1:cols
+            if C(i,j) > max_cost
+                max_cost = C(i,j);
+            end
+        end
+    end
+    temp_c = C;
+    for i = 1:rows
+        for j = 1:cols
+            C1(i,j) = temp_c(i,j)*(-1) + max_cost;
+        end
+    end
+    
+    if debug
+        disp("Матрица после первого шага максимизации");
+        disp(C1);
+    end
+end
+
+% Поиск наименьшего элемента столбца и его вычитание из элементов столбца
+min_c = min(C1, [], 1);
+C1 = C1 - min_c;
+if debug
+    disp("Матрица после вычитания наименьшего элемента по столбцам");
+    disp(C1);
+end
+
+% Поиск наименьшего элемента строки и его вычитание из элементов строки
+min_r = min(C1, [], 2);
+C1 = C1 - min_r;
+if debug
+    disp("Матрица после вычитания наименьшего элемента по строкам");
+    disp(C1);
+end
+
+% Первичный поиск 0*
+stars = find_stars(C1);
+
+N = size(C1, 1);
+quotes = zeros(N);
+
+if debug
+    disp("Выделенные 0* для определения CHH");
+    debug_matrix(C1, stars, quotes, [], zeros(N));
+end
+% |CHH|
+CNN = nnz(stars);
+if debug
+    disp("CHH = ");
+    disp(CNN);
+end
+if CNN < cols
+    if debug
+        disp("СНН нужно улучшать");
+    end
+    
+    cur_row = 0;
+    cur_col = 0;
+    
+    iteration = 1;
+    while CNN < rows
+        if debug
+            disp("Номер итерации: ");
+            disp(iteration);
+        end
+
+        markedCol = find_marked_cols(stars);
+        markedRows = zeros(size(C1,2));
+        while true
+            % Поиск неотмеченных нулей
+            [succ, cur_col, cur_row] = find_unm_zeros(C1, markedCol, markedRows);
+            % Если 0 найден
+            if succ
+                quotes(cur_row,cur_col) = 1;
+                if debug
+                    disp("Матрица после нахождения неотмеченного нуля");
+                    debug_matrix(C1, stars, quotes, markedCol, markedRows);
+                end
+                % Отметить и продолжить поиск
+                [res, col] = check_marked_zero_in_row(cur_row, stars);
+                if res == true
+                    markedRows(cur_row) = 1;
+                    markedCol(col) = 0;
+                    if debug
+                        disp("Матрица после переопределения выделений строк и столбцов");
+                        debug_matrix(C1, stars, quotes, markedCol, markedRows);
+                    end
+                % Если ноль не найден, построить L-цепочку
+                else
+                    stars = create_L_chain(stars, quotes, cur_row, cur_col);
+                    CNN=CNN+1;
+                    markedCol = find_marked_cols(stars);
+                    markedRows = zeros(size(C1,2));
+                    if debug
+                        disp("Матрица 0* после построения L-цепочки: ");
+                        disp(stars);
+                    end 
+                    break;
+                end
+            % Если ноль не найден, вычесть h
+            else
+                C1 = calc_h(C1, markedRows, markedCol);
+                if debug
+                    disp("Матрица после вычитания h из столбцов и прибавления к строкам");
+                    debug_matrix(C1, stars, quotes, markedCol, markedRows);
+                end
+            end
+        end
+    iteration = iteration + 1;
+    end
+end
+
+% X_opt и f_opt
+X_opt = zeros(cols);
+for i = 1:rows
+    for j = 1:cols
+        if stars(i,j)
+            X_opt(i,j) = 1;
+        end
+    end
+end
+disp("X_opt = ");
+disp(X_opt);
+f_opt = 0;
+for i = 1:rows
+    for j = 1:cols
+        if stars(i,j)
+            f_opt = f_opt + C(i,j)*stars(i,j);
+        end
+    end
+end
+disp("f_opt = ");
+disp(f_opt);
+
+% Функция первичного поиска 0*
+function res = find_stars(C1)
+    N = size(C1,1);
+    stars = zeros(N);
+    for i = 1:N
+        for j = 1:N
+            if C1(i,j) == 0
+                if max(stars(:,j))==0 && max(stars(i,:))==0
+                    stars(i,j) = 1;
+                    break;
+                end
+            end
+        end
+    end
+    res = stars;
+end
+
+% Функция поиска отмеченных столбцов
+function marked_cols = find_marked_cols(stars)
+    marked_cols = sum(stars);
+end
+
+% Функция поиска неотмеченного нуля в матрице
+function [res,col,row] = find_unm_zeros(C1, markedCol, markedRows)
+    N = size(C1,1);
+    col = 0;
+    row = 0;
+    res = false;
+    for j = 1:N
+        for i = 1:N
+            if C1(i,j) == 0 && markedCol(j) == 0 && markedRows(i) == 0
+                res = true;
+                col = j;
+                row = i;
+                break;
+            end
+        end
+    end
+end
+
+% Функция, которая определяет, есть ли в строке матрицы 0*
+function [res, col] = check_marked_zero_in_row(row, stars)
+    res = false;
+    col = 0;
+    for j = 1:size(stars, 2)
+        if stars(row, j) == 1
+            res = true;
+            col = j;
+            break
+        end
+    end
+end
+
+% Функция поиска 0* в столбце
+function [res, row] = check_marked_zero_in_column(col,stars)
+    [res,row] = check_marked_zero_in_row(col,stars');
+end
+
+% Функция пересчета матрицы на основе поиска h и его вычитания из невыделенных столбцов
+function matrix = calc_h(C1, markedRows, markedCol)
+    matrix = C1;
+    N = size(C1,1);
+    min_el = -1;
+    
+    % Поиск минимального элемента из невыделенных
+    for j = 1:N
+        for i = 1:N
+            if markedCol(j) == 0 && markedRows(i) == 0
+                if matrix(i, j) < min_el || min_el == -1
+                    min_el = matrix(i, j);
+                end
+            end
+        end
+    end
+    
+    % Вычитание минимального элемента из невыделенных
+    for j = 1:N
+        for i = 1:N
+            if markedCol(j) == 0 && markedRows(i) == 0
+                matrix(i,j) = matrix(i,j) - min_el;
+            end
+            if markedCol(j) == 1 && markedRows(i) == 1
+                matrix(i,j) = matrix(i,j) + min_el;
+            end
+        end
+    end
+end
+
+% Функция построения L-цепочки
+function created_L = create_L_chain(stars, quotes, row, col)
+    res = true;
+    cur_col = col;
+    cur_row = row;
+    created_L = stars;
+    while res
+        created_L(cur_row,cur_col) = 1;
+        [res,cur_row] = check_marked_zero_in_column(cur_col,stars);
+        if(res == true)
+            stars(cur_row, cur_col) = 0;
+            created_L(cur_row, cur_col) = 0;
+            [res, cur_col] = check_marked_zero_in_row(cur_row,quotes);
+        end
+    end
+end
+
+% Функция вывода матрицы с 0*, 0'
+function debug_matrix(C1, stars, quotes, markedCol, markedRows)
+    for i = 1:size(C1,1)
+        for j = 1:size(C1,2)
+            if stars(i,j) == 1
+                fprintf("%d* \t", C1(i,j));
+            else
+                if quotes(i,j) == 1
+                    fprintf("%d' \t", C1(i,j));
+                else
+                    fprintf("%d \t", C1(i,j));
+                end
+            end
+        end
+        if markedRows(i)
+            fprintf(' +\n');
+        else
+            fprintf(' \n');
+        end 
+    end
+    for i = 1:length(markedCol)
+        if markedCol(i)
+            fprintf("+ \t");
+        else
+            fprintf(" \t");
+        end
+    end
+    fprintf("\n");
+end
+
+end
+\end{lstlisting}
+
+\subsection{Задача максимизации}
+
+Исходная матрица:
+
+\begin{equation} C=
+\begin{bmatrix}
+10 & 4 & 9 & 8 & 5\\
+9 & 3 & 5 & 7 & 8\\
+2 & 5 & 8 & 10 & 5\\
+4 & 5 & 7 & 9 & 3\\
+8 & 7 & 10 & 9 & 6
+\end{bmatrix}
+\end{equation}
+
+На первом шаге максимизации определяем максимальный элемент матрицы стоимостей -- 10. Вычитаем найденный максимум из всех элементов матрицы и домножаем их на -1:
+
+\begin{equation}
+\begin{bmatrix}
+     0  &   6  &   1  &   2  &   5\\
+     1  &   7  &   5  &   3  &   2\\
+     8  &   5  &   2  &   0  &   5\\
+     6  &   5  &   3  &   1  &   7\\
+     2  &   3  &   0  &   1  &   4\\
+\end{bmatrix}
+\end{equation}
+
+Для каждого из столбцов вычтем минимальные элементы:
+
+\begin{equation}
+\begin{bmatrix}
+     0  &   3  &   1  &   2  &   3\\
+     1  &   4  &   5  &   3  &   0\\
+     8  &   2  &   2  &   0  &   3\\
+     6  &   2  &   3  &   1  &   5\\
+     2  &   0  &   0  &   1  &   2\\
+\end{bmatrix}
+\end{equation}
+
+Для каждой из строк вычтем минимальные элементы:
+
+\begin{equation}
+\begin{bmatrix}
+     0  &   3  &   1  &   2  &   3\\
+     1  &   4  &   5  &   3  &   0\\
+     8  &   2  &   2  &   0  &   3\\
+     5  &   1  &   2  &   0  &   4\\
+     2  &   0  &   0  &   1  &   2\\
+\end{bmatrix}
+\end{equation}
+
+Выделим 0* и составим СНН:
+
+\begin{equation}
+\begin{bmatrix}
+0^* &	3 &		1  &	2   &	3 	 \\
+1  &	4 &		5  &	3   &	0^*  \\
+8  &	2 &		2  &	0^* & 	3 	 \\
+5  &    1 &		2  &	0   &	4 	 \\
+2  &	0^* &	0' &	1   &	2 	 \\
+\end{bmatrix}
+\end{equation}
+\begin{equation}
+\begin{matrix}
++ & + & - & + & +
+\end{matrix}
+\end{equation}
+
+$|CHH| = 4 < 5 = n$, следовательно, СНН нужно улучшать.
+
+1 итерация.
+
+Матрица после переопределения выделений строк и столбцов:
+
+\begin{equation}
+\begin{bmatrix}
+0^* &	3 &		1  &	2   &	3 	 \\
+1  &	4 &		5  &	3   &	0^*  \\
+8  &	2 &		2  &	0^* & 	3 	 \\
+5  &    1 &		2  &	0   &	4 	 \\
+2  &	0^* &	0' &	1   &	2 	 \\
+\end{bmatrix}
+\begin{matrix}
+- \\
+- \\
+- \\
+- \\
++
+\end{matrix}
+\end{equation}
+\begin{equation}
+\begin{matrix}
++ & - & - & + & +
+\end{matrix}
+\end{equation}
+
+Находим $h=1>0$ -- наименьший элемент в невыделенных столбцах. Вычитаем $h$ из невыделенных столбцов:
+
+\begin{equation}
+\begin{bmatrix}
+0^* &	2  & 	0   &	2   &	3 	\\ 
+1  &	3  & 	4   &	3   &	0^* 	\\
+8  &	1  & 	1   &	0^*  & 	3 	\\
+5  & 	0  & 	1   &	0   &	4 	\\
+2  &   -1^* &  -1'  &	1   &	2 	\\
+\end{bmatrix}
+\end{equation}
+
+\newpage
+Прибавляем $h$ к выделенным строкам:
+
+\begin{equation}
+\begin{bmatrix}
+0^* &	2  & 	0   &	2   &	3 	\\ 
+1  &	3  & 	4   &	3   &	0^* \\
+8  &	1  & 	1   &	0^* & 	3 	\\
+5  & 	0  & 	1   &	0   &	4 	\\
+3  &	0^*  & 	0'  &	2   &	3 	\\
+\end{bmatrix}
+\end{equation}
+
+Находим неотмеченный 0 и переопределяем выделение столбцов и строк:
+
+\begin{equation}
+\begin{bmatrix}
+0^* &	2  & 	0'   &	2   &	3 	\\ 
+1  &	3  & 	4   &	3   &	0^* \\
+8  &	1  & 	1   &	0^* & 	3 	\\
+5  & 	0  & 	1   &	0   &	4 	\\
+3  &	0^*  & 	0'  &	2   &	3 	\\
+\end{bmatrix}
+\begin{matrix}
++ \\
+- \\
+- \\
+- \\
++
+\end{matrix}
+\end{equation}
+\begin{equation}
+\begin{matrix}
+- & - & - & + & +
+\end{matrix}
+\end{equation}
+
+Построим L-цепочку, начиная с элемента с индексами (4; 2), где 4 -- номер строки, 2 -- номер столбца. Тогда в цепочку так же войдут элементы с индексами (5; 2) и (5; 3).
+
+Матрица после построения L-цепочки и  переопределения отмеченных элементов:
+
+\begin{equation}
+\begin{bmatrix}
+0^* &	2  & 	0'   &	2   &	3 	\\ 
+1  &	3  & 	4   &	3   &	0^* \\
+8  &	1  & 	1   &	0^* & 	3 	\\
+5  & 	0^* & 	1   &	0   &	4 	\\
+3  &	0  & 	0^*  &	2   &	3 	\\
+\end{bmatrix}
+\end{equation}
+
+$|CHH| = 5 = n$, следовательно, СНН больше улучшать не нужно. 
+
+\begin{equation} X_{opt} = 
+\begin{bmatrix}
+1  &	0  & 	0   &	0   &	0 	\\ 
+0  &	0  & 	0   &	0   &	1   \\
+0  &	0  & 	0   &	1   & 	0 	\\
+0  & 	1  & 	0   &	0   &	0 	\\
+0  &	0  & 	1   &	0   &	0 	\\
+\end{bmatrix}
+\end{equation}
+
+\begin{equation}
+f_{opt} = 10+5+10+10+8=43
+\end{equation}
+
+\subsection{Задача минимизациии}
+
+Исходная матрица:
+
+\begin{equation} C=
+\begin{bmatrix}
+10 & 4 & 9 & 8 & 5\\
+9 & 3 & 5 & 7 & 8\\
+2 & 5 & 8 & 10 & 5\\
+4 & 5 & 7 & 9 & 3\\
+8 & 7 & 10 & 9 & 6
+\end{bmatrix}
+\end{equation}
+
+Для каждого из столбцов вычтем минимальные элементы:
+
+\begin{equation}
+\begin{bmatrix}
+	 8  &   1  &   4  &   1  &   2\\
+     7  &   0  &   0  &   0  &   5\\
+     0  &   2  &   3  &   3  &   2\\
+     2  &   2  &   2  &   2  &   0\\
+     6  &   4  &   5  &   2  &   3\\
+\end{bmatrix}
+\end{equation}
+
+Для каждой из строк вычтем минимальные элементы:
+
+\begin{equation}
+\begin{bmatrix}
+     7  &   0  &   3  &   0  &   1\\
+     7  &   0  &   0  &   0  &   5\\
+     0  &   2  &   3  &   3  &   2\\
+     2  &   2  &   2  &   2  &   0\\
+     4  &   2  &   3  &   0  &   1\\
+\end{bmatrix}
+\end{equation}
+
+\newpage
+Выделим 0* и составим СНН:
+
+\begin{equation}
+\begin{bmatrix}
+     7    &   0^*  &   3    &   0    &   1\\
+     7    &   0    &   0^*  &   0    &   5\\
+     0^*  &   2    &   3    &   3    &   2\\
+     2    &   2    &   2    &   2    &   0^*\\
+     4    &   2    &   3    &   0^*  &   1\\
+\end{bmatrix}
+\end{equation}
+\begin{equation}
+\begin{matrix}
++ & + & - & + & +
+\end{matrix}
+\end{equation}
+
+$|CHH| = 5 = n$, следовательно, СНН больше улучшать не нужно. 
+
+\begin{equation} X_{opt} = 
+\begin{bmatrix}
+     0  &   1  &   0  &   0  &   0\\
+     0  &   0  &   1  &   0  &   0\\
+     1  &   0  &   0  &   0  &   0\\
+     0  &   0  &   0  &   0  &   1\\
+     0  &   0  &   0  &   1  &   0\\
+\end{bmatrix}
+\end{equation}
+
+\begin{equation}
+f_{opt} = 2+4+5+9+3 = 23
+\end{equation}
+
+
+\section{Заключение}
+
+В результате выполнения лабораторной работы был реализован венгерский метод решения задачи о назначениях для задач минимизации и максимизации. В ходе выполнения лабораторной работы была написана программа на языке MatLab, позволяющая применять венгерский метод решения задачи о назначениях.
+
+\end{document}
